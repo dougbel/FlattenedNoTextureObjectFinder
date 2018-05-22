@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>obj_reco_norgbd_notexture_trainer</name>
+  <name>obj_reco_flattened_trainer</name>
   <version>0.0.0</version>
   <description>The obj_reco_norgbd_notexture package</description>
 

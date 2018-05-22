@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(obj_reco_norgbd_notexture_trainer)
+project(obj_reco_flattened_trainer)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -114,7 +114,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES obj_reco_norgbd_notexture_trainer
+#  LIBRARIES obj_reco_flattened_trainer
 #  CATKIN_DEPENDS geometry_msgs justina_tools roscpp rospy sensor_msgs std_msgs tf vision_msgs
 #  DEPENDS system_lib
 )
@@ -134,7 +134,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/obj_reco_norgbd_notexture_trainer.cpp
+#   src/${PROJECT_NAME}/obj_reco_flattened_trainer.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -209,7 +209,7 @@ target_link_libraries(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_obj_reco_norgbd_notexture_trainer.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_obj_reco_flattened_trainer.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

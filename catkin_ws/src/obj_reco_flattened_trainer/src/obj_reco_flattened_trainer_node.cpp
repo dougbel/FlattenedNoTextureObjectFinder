@@ -3,7 +3,7 @@
 #include "justina_tools/JustinaTools.h"
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
-#include "obj_reco_norgbd_notexture_trainer/SegmenterTrainer.h"
+#include "obj_reco_flattened_trainer/SegmenterTrainer.h"
 
 
 
