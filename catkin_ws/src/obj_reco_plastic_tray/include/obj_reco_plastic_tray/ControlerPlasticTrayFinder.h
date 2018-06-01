@@ -21,6 +21,7 @@
 #define CONTROLEROBJECTSNOTEXTURENORD_H
 
 #include <ros/ros.h>
+#include <math.h>
 #include <sensor_msgs/PointCloud2.h>
 
 #include <geometry_msgs/Vector3.h>
@@ -29,14 +30,14 @@
 
 #include "justina_tools/JustinaTools.h"
 
-#include "obj_reco_flattened/ModelFlattenedObjects.h"
+#include "obj_reco_plastic_tray/ModelPlasticTray.h"
 
-#include "vision_msgs/VisionFlattenedObjectList.h"
+#include "vision_msgs/MSG_VisionPlasticTray.h"
 
-#include "vision_msgs/RecognizeFlattenedObjects.h"	//servicio
+#include "vision_msgs/SRV_DetectPlasticTrayZones.h"
 
 
-class ControlerFlattenedObjects
+class ControlerPlasticTrayFinder
 {
 
 public:
@@ -47,13 +48,13 @@ public:
 	float threshold_avgPixelsAreaOnImage;
 		
 	
-	ControlerFlattenedObjects( ros::NodeHandle &, bool = false);
+	ControlerPlasticTrayFinder( ros::NodeHandle &, bool = false);
 	
 	void cb_searchObjectsOnTopic(const sensor_msgs::PointCloud2ConstPtr&);
 	
-	vision_msgs::VisionFlattenedObjectList cb_searchObjects(cv::Mat imgSrc, cv::Mat xyzCloud);
+	vision_msgs::MSG_VisionPlasticTray cb_searchObjects(cv::Mat imgSrc, cv::Mat xyzCloud);
 	
-	bool cb_srv_FindPlaneObjects(vision_msgs::RecognizeFlattenedObjects::Request &req, vision_msgs::RecognizeFlattenedObjects::Response &resp);
+	bool cb_srv_FindPlaneObjects(vision_msgs::SRV_DetectPlasticTrayZones::Request &req, vision_msgs::SRV_DetectPlasticTrayZones::Response &resp);
 	
 private:
 	
@@ -65,18 +66,22 @@ private:
 	Mat updateSearchingArea(cv::Mat wholeMask,cv::Mat subMask, Rect bounding_rect );
 	Mat blindSpotOnInput(cv::Mat bgrInput,cv::Mat maskSpot, Rect bounding_rect );
 	Mat getMaskLargestCountour(Mat mask, vector<Point>contour);
-	vector<cv::Point3f> getMasked3DPOints(Mat XYZimg,cv::Mat mask);
+	vector<cv::Point3f> getMasked3DPOints(Mat XYZimg,Mat mask);
+	vector<Point2f> adjustMinRect(Mat mask ,Point2f  rect_points[]);
+	
 	void getOrientation(vector<cv::Point3f> validPoints, cv::Point3f& cntr, vector<cv::Point3f>& eigen_vecs, vector<float>& eigen_val);
 	cv::Point3f calculateSize(vector<cv::Point3f> validPoints );
 	cv::Point3f calculateNearest3Dpoint(vector<cv::Point3f> validPoints);
 	cv::Point3f calculateCenter3Dpoint( vector<cv::Point3f> validPoints );
-	vision_msgs::VisionFlattenedObject createVisionFlattenedObject(cv::Mat xyzCloud, cv::Mat mask,cv::Rect bounding_rect, string name);
+	cv::Point3f calculateTallestPoint( vector<cv::Point3f> validPoints );
+	//vision_msgs::VisionFlattenedObject createVisionFlattenedObject(cv::Mat xyzCloud, cv::Mat mask,cv::Rect bounding_rect, string name);
 	
+	//vector<vision_msgs::VisionFlattenedObject> insertObjectMessaje(vector<vision_msgs::VisionFlattenedObject> object_list, vision_msgs::VisionFlattenedObject object_msg);
 	
 	ros::NodeHandle		nodeHandle;
 	ros::ServiceServer	srv_FindPlaneObjects;
 	ros::ServiceClient  clt_RgbdRobot;
-	ModelObjectsFlattened models;
+	ModelPlasticTray models;
 	
 	
 	

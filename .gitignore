@@ -2,3 +2,9 @@
 catkin_ws/src/\.kdev4/
 
 catkin_ws/src/obj_reco_flattened/\.kdev4/
+
+catkin_ws/build/
+
+catkin_ws/devel/
+
+*.kdev4

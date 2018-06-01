@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(obj_reco_flattened)
+project(obj_reco_plastic_tray)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -151,8 +151,8 @@ include_directories(
 add_executable(
   ${PROJECT_NAME}
   src/${PROJECT_NAME}_node.cpp
-  src/ModelFlattenedObjects.cpp
-  src/ControlerFlattenedObjects.cpp
+  src/ModelPlasticTray.cpp
+  src/ControlerPlasticTrayFinder.cpp
   )
 
 ## Rename C++ executable without prefix
@@ -213,7 +213,7 @@ target_link_libraries(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/obj_reco_flattened.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/obj_reco_plastic_tray.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

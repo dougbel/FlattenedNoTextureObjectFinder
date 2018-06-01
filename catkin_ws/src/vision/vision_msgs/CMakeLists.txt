@@ -14,11 +14,13 @@ add_message_files(
   FILES
   VisionFlattenedObject.msg
   VisionFlattenedObjectList.msg
+  MSG_VisionPlasticTray.msg
 )
 
 add_service_files(
   FILES
   RecognizeFlattenedObjects.srv
+  SRV_DetectPlasticTrayZones.srv
 )
 
 generate_messages(

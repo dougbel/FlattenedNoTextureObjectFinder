@@ -26,7 +26,7 @@
 #include "opencv2/opencv.hpp"
 
 
-#include "obj_reco_flattened/Segmenter.h"
+#include "obj_reco_plastic_tray/Segmenter.h"
 
 
 using namespace std;
@@ -34,11 +34,11 @@ using namespace cv;
 
 
 
-class ModelObjectsFlattened
+class ModelPlasticTray
 {
 public:
 	
-	ModelObjectsFlattened();
+	ModelPlasticTray();
 	vector< string > names; 
 	vector< vector<Scalar >  > min_maxScalarsSegmentation;
 	vector<  Mat (*) (Mat,Mat, Scalar, Scalar) > methodsSegmentation;

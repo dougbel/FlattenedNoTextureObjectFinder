@@ -1,5 +1,5 @@
 
-#include "obj_reco_flattened/ControlerFlattenedObjects.h"
+#include "obj_reco_plastic_tray/ControlerPlasticTrayFinder.h"
 
 using namespace cv;
 using namespace std;
@@ -9,7 +9,7 @@ using namespace std;
 int main(int argc, char** argv) {
 
 
-    ros::init(argc, argv, "obj_reco_flattened_node");
+	ros::init(argc, argv, "obj_reco_plastic_tray");
     ros::ServiceClient cltRgbdRobot;
     ros::NodeHandle nodeHandle("~");
     ros::Rate loopRate(30);
@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 
     
     debug = true;
-    ControlerFlattenedObjects controler(nodeHandle, debug);
+    ControlerPlasticTrayFinder controler(nodeHandle, debug);
 
 
     /*cltRgbdRobot = nodeHandle.serviceClient<point_cloud_manager::GetRgbd>("/hardware/point_cloud_man/rgbd_wrt_kinect");
